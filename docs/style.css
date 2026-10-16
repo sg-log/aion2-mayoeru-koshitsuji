@@ -8,10 +8,30 @@ main{padding:27px 0 55px}.hero{background:linear-gradient(115deg,#183853 0%,#325
 @media(max-width:350px){.routines{grid-template-columns:1fr}.nav a:nth-child(2){display:none}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 
-/* AION-inspired detailing: quiet blue, wing motif, restrained antique-gold lines. */
-.brand .mark{border-color:#d3c6ac;background:linear-gradient(140deg,#fff,#edf5fb);color:var(--blue)}.brand .mark svg{width:26px;height:22px;fill:none;stroke:currentColor;stroke-width:1.55;stroke-linejoin:round;stroke-linecap:round}.brand .mark svg .gold-tip{stroke:#b5a078}
-.hero{background:linear-gradient(117deg,#193b56 0%,#2d5676 72%,#375f7b 100%)}.hero:after{border-color:rgba(215,193,149,.20);width:340px;height:340px;right:-94px;top:-200px}.aion-wings{position:absolute;width:340px;height:auto;right:-32px;top:-9px;opacity:.24;color:#d8e7f2;pointer-events:none;z-index:0}.hero .stroke{width:42px;background:linear-gradient(90deg,#d7be8f,rgba(215,190,143,.20))}
+/* AION-inspired detailing: cool blue and violet light, restrained gold accents. */
+.brand .mark{border-color:#d5dfec;background:#f2f7fb;color:#5b7d9c;font-size:23px;font-weight:400;line-height:1}
+.hero{
+  background:
+    radial-gradient(ellipse 330px 260px at 97% 10%,rgba(175,158,222,.26) 0%,transparent 79%),
+    radial-gradient(ellipse 350px 205px at 82% 95%,rgba(142,182,226,.22) 0%,transparent 83%),
+    radial-gradient(ellipse 260px 160px at 56% -20%,rgba(194,217,246,.09) 0%,transparent 100%),
+    linear-gradient(113deg,#193b56 0%,#28486a 45%,#3c4873 79%,#304c6c 100%);
+}
+.hero:before{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(136deg,transparent 48%,rgba(233,239,255,.045) 57%,transparent 68%);
+  pointer-events:none;
+}
+.hero:after{
+  content:"";position:absolute;
+  width:290px;height:230px;top:-92px;right:-62px;
+  border:0;border-radius:50%;
+  background:radial-gradient(ellipse at center,rgba(222,225,255,.15) 0%,rgba(213,218,250,.07) 30%,transparent 70%);
+  pointer-events:none;
+}
+.hero .stroke{width:42px;background:linear-gradient(90deg,#d7be8f,rgba(215,190,143,.20))}
 .section h2{display:flex;align-items:center;gap:10px}.section h2:before{content:"";display:inline-block;width:3px;height:17px;flex:none;border-radius:5px;background:linear-gradient(#d8c59b,#b79d6b)}
 .routine{position:relative;overflow:hidden}.routine:before{content:"";position:absolute;top:16px;left:0;bottom:16px;width:2px;background:linear-gradient(180deg,#e6d5ab,#c2ab7d);opacity:.70}.glyph{background:linear-gradient(135deg,#eef4f9,#f6f4ee);border:1px solid #e0e7e9}
 .category .symbol{display:inline-flex;align-items:center;justify-content:center;height:27px;width:27px;margin-bottom:2px;color:#557d9c}.category .symbol svg{height:21px;width:21px}.category:hover,.routine:hover{border-color:#c5b18a}.category[aria-pressed="true"]{border-color:#b5a078;background:#f4f5f1}.category[aria-pressed="true"] .symbol{color:#9d865f}
-@media(max-width:680px){.aion-wings{width:260px;right:-102px;top:-6px;opacity:.16}.hero{background:linear-gradient(117deg,#193b56,#2d5676)}}
+@media(max-width:680px){.hero{background:radial-gradient(ellipse 235px 210px at 105% 0%,rgba(175,158,222,.23),transparent 80%),radial-gradient(ellipse 230px 180px at 90% 100%,rgba(142,182,226,.16),transparent 85%),linear-gradient(113deg,#193b56 0%,#28486a 58%,#3c4873 100%)}.hero:after{width:210px;height:170px;top:-70px;right:-85px}}
