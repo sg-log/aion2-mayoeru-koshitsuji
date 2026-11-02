@@ -27,3 +27,31 @@ assert.match(daily, /data-page="daily"/);
 assert.match(weekly, /data-page="weekly"/);
 for (const file of [detail, daily, weekly]) assert.match(file, /src="\.\/page\.js"/);
 console.log("OK: synonym search, routes, and content view wiring.");
+
+
+import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
+import { spawnSync } from "node:child_process";
+const dir = mkdtempSync(join(tmpdir(), "aion2-validation-"));
+try {
+  mkdirSync(join(dir, "docs", "data"), { recursive: true });
+  const publish = (record) => {
+    writeFileSync(join(dir, "docs", "data", "notes.json"), JSON.stringify([record]), "utf8");
+    return spawnSync(process.execPath, [fileURLToPath(new URL("./validate-content.mjs", import.meta.url))],
+      { cwd: dir, encoding: "utf8" });
+  };
+  const valid = {
+    id: "sample-article", title: "検証用の架空記事", category: "gear", summary: "架空の記事",
+    details: [], keywords: ["テスト"], status: "公開中",
+    checked_at: "2026-11-02", sources: [{ label: "テスト出典", url: "https://example.com/" }]
+  };
+  assert.equal(publish(valid).status, 0, "well-formed approved records pass");
+  assert.notEqual(publish({ ...valid, status: "要確認" }).status, 0, "unconfirmed records cannot be published");
+  assert.notEqual(publish({ ...valid, sources: [] }).status, 0, "uncited records cannot be published");
+  assert.notEqual(publish({ ...valid, checked_at: "2026-02-30" }).status, 0, "invalid check dates are blocked");
+} finally {
+  rmSync(dir, { recursive: true, force: true });
+}
+console.log("OK: approval, source, and date validation guards.");
