@@ -2,12 +2,12 @@
 :root{--header-height:64px;color-scheme:light;--ink:#273954;--sub:#62718a;--faint:#8e9aaf;--bg:#f5f7fb;--white:#fff;--line:#e0e5ee;--navy:#263752;--purple:#5f658e;--focus:#789cc6}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;font-size:14px;line-height:1.65}
+body{margin:0;padding-top:var(--header-height);background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;font-size:14px;line-height:1.65}
 button,input{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
 button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
 .skip{position:absolute;left:8px;top:-80px;background:#fff;z-index:30;padding:8px 12px}.skip:focus{top:8px}
-.topbar{position:sticky;top:0;z-index:50;background:linear-gradient(105deg,#243650,#343f65 75%,#3c426b);color:#fff;border-bottom:1px solid #3d4b6c}
-.topbar-inner{height:64px;max-width:1220px;padding:0 28px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.topbar{position:fixed;top:0;left:0;right:0;width:100%;height:var(--header-height);z-index:100;box-shadow:0 2px 12px #14253b16;background:linear-gradient(105deg,#243650,#343f65 75%,#3c426b);color:#fff;border-bottom:1px solid #3d4b6c}
+.topbar-inner{height:100%;max-width:1220px;padding:0 28px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px}
 .identity{display:flex;align-items:center;gap:11px;font-weight:760;font-size:15px;letter-spacing:.035em}
 .star{display:grid;place-items:center;width:32px;height:32px;border:1px solid #8291ad;border-radius:9px;color:#e7d7ad;font-size:23px}
 .identity-label{line-height:1.25}.micro{font-size:9px;letter-spacing:.2em;font-weight:500;color:#b6c5df;display:block}
@@ -83,7 +83,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 @media(max-width:680px){
 :root{--header-height:60px}
-.topbar-inner{height:60px;padding:0 16px}.identity{font-size:13px;gap:9px}.topbar-tools{gap:9px}.preview-indicator{display:none}.original-link{font-size:10px;padding:6px 8px}
+.topbar-inner{height:100%;padding:0 16px}.identity{font-size:13px;gap:9px}.topbar-tools{gap:9px}.preview-indicator{display:none}.original-link{font-size:10px;padding:6px 8px}
 .layout{display:flex;flex-direction:column;padding:0 0 25px;gap:0}
 .sidebar{position:static;overflow:visible;max-height:none;border:0;border-bottom:1px solid #e0e5ef;border-radius:0;padding:9px 12px;box-shadow:none;background:#fff}
 .sidebar>.side-label,.side-separator,.side-sublabel,.side-footnote{display:none}

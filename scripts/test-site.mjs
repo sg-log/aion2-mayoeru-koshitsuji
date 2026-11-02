@@ -71,7 +71,9 @@ assert.match(prototypeJs, /レイアウト例/, "sample article view is clearly 
 assert.match(prototypeJs, /showModal\(\)/, "image zoom behavior is wired");
 assert.match(prototypeCss, /max-width:680px/, "mobile navigation is supported");
 
-assert.match(prototypeCss, /\.topbar\{position:sticky;top:0;z-index:50/, "header stays fully visible while scrolling");
+assert.match(prototypeCss, /\.topbar\{position:fixed;top:0;left:0;right:0;width:100%;height:var\(--header-height\);z-index:100/, "header remains fixed at viewport top");
+assert.match(prototypeCss, /body\{margin:0;padding-top:var\(--header-height\)/, "fixed header does not obscure the page");
+assert.match(preview, /dictionary-preview\.css\?v=fixed-header-20261102/, "browser fetches the updated CSS");
 assert.match(prototypeCss, /\.sidebar\{[^}]*top:calc\(var\(--header-height\) \+ 18px\)/, "desktop sidebar sits below pinned header");
 assert.match(prototypeCss, /scroll-margin-top:calc\(var\(--header-height\) \+ 16px\)/, "in-page jumps clear pinned header");
 assert.match(prototypeCss, /:root\{--header-height:60px\}/, "mobile header offset is adjusted");
