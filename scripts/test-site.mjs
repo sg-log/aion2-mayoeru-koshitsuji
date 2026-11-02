@@ -55,3 +55,19 @@ try {
   rmSync(dir, { recursive: true, force: true });
 }
 console.log("OK: approval, source, and date validation guards.");
+
+
+const preview = readFileSync(new URL("../docs/preview-dictionary.html", import.meta.url), "utf8");
+const prototypeJs = readFileSync(new URL("../docs/dictionary-preview.js", import.meta.url), "utf8");
+const prototypeCss = readFileSync(new URL("../docs/dictionary-preview.css", import.meta.url), "utf8");
+assert.match(preview, /class="sidebar"/, "dictionary layout has an independent left sidebar");
+assert.match(preview, /class="workspace"/, "dictionary layout has a reading column");
+assert.match(preview, /id="search"/, "search field is present");
+assert.match(preview, /id="imageDialog"/, "image zoom dialog is present");
+assert.match(preview, /仮データ/, "sample records are explicitly labeled");
+assert.match(preview, /src="\.\/search\.js"[\s\S]*src="\.\/dictionary-preview\.js"/, "shared search is available before prototype UI");
+assert.match(prototypeJs, /status==="公開中"/, "production notes are filtered to approved status");
+assert.match(prototypeJs, /レイアウト例/, "sample article view is clearly marked");
+assert.match(prototypeJs, /showModal\(\)/, "image zoom behavior is wired");
+assert.match(prototypeCss, /max-width:680px/, "mobile navigation is supported");
+console.log("OK: independent dictionary prototype layout, sample labels, and image UI.");

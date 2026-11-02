@@ -22,3 +22,5 @@ jobs:
         run: node scripts/validate-content.mjs
       - name: Check search and article wiring
         run: node scripts/test-site.mjs
+      - name: Check standalone dictionary prototype JavaScript syntax
+        run: node --check docs/dictionary-preview.js
