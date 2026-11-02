@@ -1,25 +1,31 @@
 # AION2 まよえるこしつじ
 
-AION2の情報を、あとから探し直しやすくする非公式の個人サイト。広告なし・静的HTML・スマホ対応。
+調べたAION2の情報を、忘れてもすぐ探せる小さな非公式Webサイト。AION風の落ち着いた配色、スマホ向けの検索・カテゴリ・日課週課の導線。
 
-## 構成
-- `docs/` : GitHub Pages用の公開ファイル
-- `docs/data/notes.json` : **公開中のみ**をWeb側に出すためのデータ（今は空）
-- Notion「AION2 まよえるこしつじ｜情報DB」: 非公開の情報正本
+## データ管理
+- **Notion**：非公開の情報正本。疑問・調査内容・出典・未確認の差分を保管
+- **GPT / Work**：情報を調査・既存メモと統合。公開時はNotionを読み、差分を提示
+- **GitHub Pages**：`docs/data/notes.json` の**公開承認済み記事だけ**表示
 
-## 情報を増やすとき
-1. GPTで調査し、情報源・確認日・対象環境をNotionに保存
-2. 重複や矛盾をチェック。未確認は「要確認」のまま保管
-3. さらが公開差分を確認して承認したものだけ `docs/data/notes.json` に追加
-4. GitHub Pagesへ反映（自動収集・定期更新・自動公開なし）
+APIキー・有料サーバー・定期自動収集は不要。Notionへの保存とサイトへの反映は、接続したGPTがその都度実行する。チャットだけで無条件に自動同期されるわけではない。
 
-データ形式の例：
-```json
-[{"id":"sample","title":"サンプル","category":"money","summary":"短い説明","details":["補足"],"keywords":["別名"],"status":"公開中","checked_at":"YYYY-MM-DD","sources":[{"label":"情報源","url":"https://example.com/"}]}]
+現在の公開用データは空（Notionの調査メモはすべて「要確認」）。記事がないのは意図どおり。
+
+## サイト
+- `docs/index.html`：キーワード・言い換え検索、カテゴリ、日課・週課へのリンク
+- `docs/daily.html`, `docs/weekly.html`：承認済みの各ジャンルの記事を表示
+- `docs/note.html?id=...`：短い結論、補足、注意、出典
+- `docs/data/notes.json`：公開済みレコードのみ
+- `docs/search.js`：外部依存なしの検索処理
+
+## 確認
+Node.js 20以降で追加インストールなし：
+```sh
+node scripts/validate-content.mjs
+node scripts/test-site.mjs
 ```
 
-実際のゲーム内容が未確認なら、公開データへ追加しないこと。転載・個人情報にも注意。
+変更をpushするとGitHub Actionsも同様の検査を実行。
 
-## 公開前の確認
-このブランチはサイトデザインの確認用。 `main` には未反映。
-公開するときは承認後にマージし、GitHubの Settings → Pages → Deploy from a branch → `main` / `/docs` を指定する。
+## 公開手順
+**[PUBLISHING.md](./PUBLISHING.md)** を参照。公開はユーザー確認後のみ。現時点のGitHub Pagesは確認用ブランチ `feat/starter-preview-20261016` の `/docs` から配信し、`main` は変更しない。

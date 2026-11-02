@@ -1,0 +1,24 @@
+name: Validate public site data
+on:
+  push:
+    branches:
+      - main
+      - feat/starter-preview-20261016
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Verify approved-only publication payload
+        run: node scripts/validate-content.mjs
+      - name: Check search and article wiring
+        run: node scripts/test-site.mjs
