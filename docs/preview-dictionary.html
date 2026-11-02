@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#263752">
+<meta name="description" content="AION2 まよえるこしつじ。検索を主役にした情報辞典レイアウトのデザイン確認ページ。">
+<title>辞典型デザイン案 | AION2 まよえるこしつじ</title>
+<link rel="stylesheet" href="./dictionary-preview.css">
+<script src="./search.js" defer></script>
+<script src="./dictionary-preview.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="identity" href="./preview-dictionary.html" aria-label="まよえるこしつじ デザイン案トップ"><span class="star" aria-hidden="true">✧</span><span class="identity-label"><span class="micro">AION2</span>まよえるこしつじ</span></a>
+    <div class="topbar-tools">
+      <span class="preview-indicator">デザイン比較用</span>
+      <a href="./index.html" class="original-link">今のサイトへ <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="カテゴリナビゲーション">
+    <div class="side-label">調べる</div>
+    <nav id="categoryNav" class="category-nav" aria-label="記事カテゴリ">
+      <button type="button" class="side-link selected" data-category="all" aria-pressed="true"><span class="side-icon" aria-hidden="true">▤</span><span>すべての記事</span><span class="side-count" data-count-for="all"></span></button>
+      <button type="button" class="side-link" data-category="daily" aria-pressed="false"><span class="side-icon" aria-hidden="true">☀</span><span>デイリー</span><span class="side-count" data-count-for="daily"></span></button>
+      <button type="button" class="side-link" data-category="weekly" aria-pressed="false"><span class="side-icon" aria-hidden="true">▦</span><span>ウィークリー</span><span class="side-count" data-count-for="weekly"></span></button>
+      <div class="side-separator"></div>
+      <div class="side-label side-sublabel">カテゴリ</div>
+      <button type="button" class="side-link" data-category="money" aria-pressed="false"><span class="side-icon" aria-hidden="true">◈</span><span>通貨・商店</span><span class="side-count" data-count-for="money"></span></button>
+      <button type="button" class="side-link" data-category="gear" aria-pressed="false"><span class="side-icon" aria-hidden="true">◇</span><span>装備・強化</span><span class="side-count" data-count-for="gear"></span></button>
+      <button type="button" class="side-link" data-category="items" aria-pressed="false"><span class="side-icon" aria-hidden="true">⬡</span><span>アイテム・素材</span><span class="side-count" data-count-for="items"></span></button>
+      <button type="button" class="side-link" data-category="battle" aria-pressed="false"><span class="side-icon" aria-hidden="true">⚔</span><span>戦闘・スキル</span><span class="side-count" data-count-for="battle"></span></button>
+      <button type="button" class="side-link" data-category="explore" aria-pressed="false"><span class="side-icon" aria-hidden="true">⌖</span><span>探索・コンテンツ</span><span class="side-count" data-count-for="explore"></span></button>
+      <button type="button" class="side-link" data-category="settings" aria-pressed="false"><span class="side-icon" aria-hidden="true">⚙</span><span>設定・便利機能</span><span class="side-count" data-count-for="settings"></span></button>
+    </nav>
+    <p class="side-footnote">必要な情報を、必要なときに。</p>
+  </aside>
+  <main id="main" class="workspace">
+    <div class="workspace-head">
+      <div><div class="eyebrow">AION2 / INFORMATION</div><h1>情報を探す</h1><p class="intro">知りたい言葉を入力するか、カテゴリから選んでね。</p></div>
+    </div>
+    <section class="search-section" aria-label="記事検索">
+      <div class="search-control">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 5 5"/></svg>
+        <input id="search" type="search" placeholder="キーワードで検索" autocomplete="off" aria-label="記事を検索">
+        <button type="button" id="clearSearch" class="clear-search" aria-label="検索語を消す" hidden>×</button>
+      </div>
+      <div class="quick-search"><span>検索例</span><button type="button" data-query="継承">継承</button><button type="button" data-query="金貨">金貨</button><button type="button" data-query="日課">日課</button><button type="button" data-query="悪夢">悪夢</button></div>
+    </section>
+    <div class="demo-note" role="note" id="demoMessage"><span class="demo-dot"></span><span><strong>表示例を使用中。</strong> 記事タイトル・説明はレイアウト確認用の仮データです。未確認の攻略情報は公開していません。</span></div>
+    <section id="listing" class="listing" aria-label="記事一覧">
+      <div class="list-heading"><h2 id="listTitle">記事一覧</h2><span id="listCount" class="list-count" aria-live="polite">読み込み中</span></div>
+      <div id="articleList" class="article-list"></div>
+      <div class="empty" id="empty" hidden><div class="empty-mark">⌕</div><strong id="emptyTitle">該当する記事はありません</strong><p id="emptyText">検索語を変えるか、ほかのカテゴリを見てみてね。</p></div>
+    </section>
+    <section id="detail" class="detail" aria-label="記事の詳細" hidden>
+      <button type="button" id="back" class="back">‹ 検索結果へ戻る</button>
+      <div class="detail-meta"><span id="detailCategory" class="category-tag"></span><span id="detailStatus" class="demo-chip">レイアウト例</span></div>
+      <h2 id="detailTitle"></h2>
+      <div class="detail-section"><h3>結論</h3><p id="detailSummary" class="answer"></p></div>
+      <div class="detail-section" id="detailStepsSection"><h3>手順・補足</h3><ul id="detailSteps"></ul></div>
+      <div class="detail-section" id="detailCautionSection"><h3>注意点</h3><p id="detailCaution"></p></div>
+      <div class="detail-section image-section" id="detailImageSection" hidden>
+        <h3>画像で確認</h3>
+        <button type="button" id="imageExpand" class="image-expand" aria-label="画像を拡大">
+          <span class="image-faux"><span class="faux-header">画面の参考画像</span><span class="faux-bars"><i></i><i></i><i></i></span><span class="faux-card"><i></i><i></i></span><span class="faux-label">ここにゲーム内スクリーンショット</span></span>
+          <span class="image-hint">クリックで拡大 ↗</span>
+        </button>
+        <p class="image-caption" id="imageCaption"></p>
+      </div>
+      <div class="detail-section sources"><h3>出典・確認日</h3><div id="detailSources"></div><p id="checkedAt"></p></div>
+    </section>
+    <footer class="site-foot">非公式の個人情報サイト · このページは新デザインの確認用です</footer>
+  </main>
+</div>
+<dialog id="imageDialog" class="image-dialog" aria-label="参考画像の拡大表示"><div class="dialog-header"><strong>画像の表示例</strong><button type="button" id="closeDialog" aria-label="閉じる">×</button></div><div id="largeImage"></div><p>ゲーム画面の画像がある場合だけ表示します。現在は配置見本です。</p></dialog>
+</body>
+</html>
