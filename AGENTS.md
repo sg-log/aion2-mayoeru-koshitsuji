@@ -1,0 +1,11 @@
+# AION2 まよえるこしつじ
+- Notion情報DBが非公開正本: https://app.notion.com/p/60fa14bf05e84b35be9b1b46b7e0cc7e
+- 公開サイトは `docs/` のGitHub Pages。外部APIトークンは置かない。
+- `docs/data/notes.json` に含めるのはユーザーが公開を承認した情報のみ。
+- Notionで「要確認」等のレコードは公開しない。「公開候補」も自動承認ではない。
+- 誤記・古い仕様・地域差を出典と確認日で区別する。未確認の数値を補完しない。
+- 公開更新前に追加・変更・削除の差分を見せて明示的に承認を取る。
+- `node scripts/validate-content.mjs && node scripts/test-site.mjs` を通す。
+- GitHub Pagesが公開成功した後だけNotionを「公開中」へ変更する。
+- 最初は `feat/starter-preview-20261016` のみ。mainは承認なく変更しない。
+- 詳細な手順は `PUBLISHING.md` を参照。
