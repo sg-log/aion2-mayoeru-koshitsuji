@@ -70,4 +70,10 @@ assert.match(prototypeJs, /status==="公開中"/, "production notes are filtered
 assert.match(prototypeJs, /レイアウト例/, "sample article view is clearly marked");
 assert.match(prototypeJs, /showModal\(\)/, "image zoom behavior is wired");
 assert.match(prototypeCss, /max-width:680px/, "mobile navigation is supported");
+
+assert.match(prototypeCss, /\.topbar\{position:sticky;top:0;z-index:50/, "header stays fully visible while scrolling");
+assert.match(prototypeCss, /\.sidebar\{[^}]*top:calc\(var\(--header-height\) \+ 18px\)/, "desktop sidebar sits below pinned header");
+assert.match(prototypeCss, /scroll-margin-top:calc\(var\(--header-height\) \+ 16px\)/, "in-page jumps clear pinned header");
+assert.match(prototypeCss, /:root\{--header-height:60px\}/, "mobile header offset is adjusted");
+
 console.log("OK: independent dictionary prototype layout, sample labels, and image UI.");

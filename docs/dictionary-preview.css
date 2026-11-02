@@ -1,19 +1,19 @@
 /* Stand-alone dictionary layout prototype. Intentionally does not alter style.css */
-:root{color-scheme:light;--ink:#273954;--sub:#62718a;--faint:#8e9aaf;--bg:#f5f7fb;--white:#fff;--line:#e0e5ee;--navy:#263752;--purple:#5f658e;--focus:#789cc6}
+:root{--header-height:64px;color-scheme:light;--ink:#273954;--sub:#62718a;--faint:#8e9aaf;--bg:#f5f7fb;--white:#fff;--line:#e0e5ee;--navy:#263752;--purple:#5f658e;--focus:#789cc6}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;font-size:14px;line-height:1.65}
 button,input{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
 button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
 .skip{position:absolute;left:8px;top:-80px;background:#fff;z-index:30;padding:8px 12px}.skip:focus{top:8px}
-.topbar{background:linear-gradient(105deg,#243650,#343f65 75%,#3c426b);color:#fff;border-bottom:1px solid #3d4b6c}
+.topbar{position:sticky;top:0;z-index:50;background:linear-gradient(105deg,#243650,#343f65 75%,#3c426b);color:#fff;border-bottom:1px solid #3d4b6c}
 .topbar-inner{height:64px;max-width:1220px;padding:0 28px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px}
 .identity{display:flex;align-items:center;gap:11px;font-weight:760;font-size:15px;letter-spacing:.035em}
 .star{display:grid;place-items:center;width:32px;height:32px;border:1px solid #8291ad;border-radius:9px;color:#e7d7ad;font-size:23px}
 .identity-label{line-height:1.25}.micro{font-size:9px;letter-spacing:.2em;font-weight:500;color:#b6c5df;display:block}
 .topbar-tools{display:flex;align-items:center;gap:20px}.preview-indicator{font-size:11px;color:#c4cce0}.original-link{font-size:12px;border:1px solid #667696;padding:6px 11px;border-radius:7px}.original-link:hover{background:#ffffff13}
 .layout{max-width:1220px;padding:32px 28px 48px;margin:auto;display:grid;grid-template-columns:232px minmax(0,1fr);gap:33px}
-.sidebar{align-self:start;position:sticky;top:20px;padding:17px 13px 15px;border:1px solid var(--line);background:var(--white);border-radius:11px;box-shadow:0 6px 24px #213a5610;max-height:calc(100vh - 40px);overflow:auto}
+.sidebar{align-self:start;position:sticky;top:calc(var(--header-height) + 18px);padding:17px 13px 15px;border:1px solid var(--line);background:var(--white);border-radius:11px;box-shadow:0 6px 24px #213a5610;max-height:calc(100vh - var(--header-height) - 36px);overflow:auto}
 .side-label{font-size:11px;font-weight:760;color:#8791a4;letter-spacing:.04em;padding:3px 10px 10px}.side-sublabel{padding:12px 10px 6px}
 .category-nav{display:flex;flex-direction:column;gap:2px}
 .side-link{border:0;border-radius:7px;width:100%;min-height:41px;display:flex;align-items:center;gap:9px;padding:8px 10px;background:transparent;text-align:left;color:#4d5c75;font-size:13px}
@@ -23,7 +23,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .side-count{margin-left:auto;color:#8390a5;font-size:11px;font-weight:500;font-variant-numeric:tabular-nums}
 .side-separator{height:1px;background:var(--line);margin:8px 5px 0}
 .side-footnote{font-size:11px;color:#a0aabc;margin:17px 10px 0}
-.workspace{min-width:0;padding:4px 0 0}
+.workspace{min-width:0;padding:4px 0 0;scroll-margin-top:calc(var(--header-height) + 16px)}
 .eyebrow{font-size:10px;font-weight:730;letter-spacing:.22em;color:#7a87a3;margin-bottom:3px}
 .workspace-head h1{font-size:clamp(23px,2.5vw,29px);letter-spacing:.04em;margin:0 0 1px;font-weight:750;color:#293d5b}
 .intro{font-size:13px;color:var(--sub);margin:0}
@@ -82,6 +82,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .topbar-inner{padding:0 18px}.sidebar{padding:12px 8px}.side-link{padding:8px 7px;font-size:12px}.side-label{padding-left:7px}
 }
 @media(max-width:680px){
+:root{--header-height:60px}
 .topbar-inner{height:60px;padding:0 16px}.identity{font-size:13px;gap:9px}.topbar-tools{gap:9px}.preview-indicator{display:none}.original-link{font-size:10px;padding:6px 8px}
 .layout{display:flex;flex-direction:column;padding:0 0 25px;gap:0}
 .sidebar{position:static;overflow:visible;max-height:none;border:0;border-bottom:1px solid #e0e5ef;border-radius:0;padding:9px 12px;box-shadow:none;background:#fff}
